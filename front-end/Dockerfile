@@ -4,7 +4,7 @@ WORKDIR /front-end
 
 COPY . .
  
-RUN npm clean-install && npm install
+RUN npm clean-install
 
 EXPOSE 4200
  
