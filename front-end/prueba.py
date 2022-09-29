@@ -10,7 +10,7 @@ import time
 class SiteTest(unittest.TestCase):
   
     def test_visit_site(self):
-        browser = webdriver.Remote("http://172.21.0.1:4444/wd/hub", DesiredCapabilities.FIREFOX)
+        browser = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.FIREFOX)
         browser.get("http://localhost:4200/")
         
         #Clic en Start Process
