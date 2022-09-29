@@ -13,14 +13,15 @@ pipeline {
 */
     stages {
 
-
         stage('build'){
-              /*checkout scm
-              docker.image('handshake/appnode:1.0', "./front-end")
-              def customImage = docker.build("handshake/appnode:${env.BUILD_ID}")*/
+              
+              //docker.image('handshake/appnode:1.0', "./front-end")
+              //def customImage = docker.build("handshake/appnode:${env.BUILD_ID}")*/
               steps{
-                script{
-                    sh "echo 'Hola Mundo'"
+                step('install'){
+                    script{
+                        sh "echo 'Hola Mundo'"
+                    }
                 }
               }
         }
