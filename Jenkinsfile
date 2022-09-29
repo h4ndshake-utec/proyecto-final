@@ -22,7 +22,7 @@ pipeline {
 
                         
                     docker.withRegistry('', registryCredential) {
-                        def customImage = docker.build("h4ndshake/proyecto-final:app-react_v${env.BUILD_ID}", "./front-end")
+                        def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
                         customImage.push()
                         customImage.push('app-react_latest')
                     }
