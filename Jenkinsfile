@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    parameters{
+   /*  parameters{
         string(name: 'name_container', defaultValue: 'proyecto-final', description: 'nombre del docker')
         string(name: 'name_imagen', defaultValue: 'iproyecto-final', description: 'nombre de la imagen')
         string(name: 'tag_imagen', defaultValue: 'latest', description: 'tag de la imagen')
@@ -10,14 +10,19 @@ pipeline {
     environment {
         name_final = "${name_container}${tag_imagen}${puerto_imagen}"
     }
-
+*/
     stages {
 
 
         stage('build'){
-              checkout scm
+              /*checkout scm
               docker.image('handshake/appnode:1.0', "./front-end")
-              def customImage = docker.build("handshake/appnode:${env.BUILD_ID}")
+              def customImage = docker.build("handshake/appnode:${env.BUILD_ID}")*/
+              steps{
+                script{
+                    sh "echo 'Hola Mundo'"
+                }
+              }
         }
 
         stage('test'){
