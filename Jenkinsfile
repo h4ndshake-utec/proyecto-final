@@ -23,10 +23,10 @@ pipeline {
                 script{
 
                         
-                    docker.withRegistry('', registryCredential) {
+                    docker.withRegistry('', '${registryCredential}') {
                         def customImage = docker.build("${registry}:${tag}", "./front-end")
                         customImage.push()
-                        customImage.push(tag_latest)
+                        customImage.push('${tag_latest}')
                     }
                     //docker.image('pahud/eks-kubectl-docker', "./front-end")
                     //def customImage = docker.build("${registry}:app-react_v${env.BUILD_ID}", "./front-end")
