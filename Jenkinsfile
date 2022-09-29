@@ -11,6 +11,7 @@ pipeline {
         //name_final = "${name_container}${tag_imagen}${puerto_imagen}"
         registry = "h4ndshake/proyecto-final" 
         registryCredential = '6e04cdc9-c5fa-4486-83b7-2d6b05a127f7' 
+        def customImage = ''
     }
 
     stages {
@@ -20,9 +21,7 @@ pipeline {
             steps{
                 script{
                     docker.withRegistry('', registryCredential) {
-                        def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
-                        //customImage.push()
-                        //customImage.push('app-react_latest')
+                        customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
                     }
                     sh 'docker compose up -d'
                 }
@@ -38,11 +37,13 @@ pipeline {
         stage('deploy'){
             steps{
                 script{
-                    def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
-                    customImage.push()
-                    customImage.push('app-react_latest')
+                    docker.withRegistry('', registryCredential) {
+                        //def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
+                        customImage.push()
+                        customImage.push('app-react_latest')
+                    }
+                    sh 'docker compose up -d'
                 }
-                sh 'docker compose up -d'
             }
         }
         
