@@ -18,7 +18,7 @@ pipeline {
             steps{
                 script{
                     //docker.image('pahud/eks-kubectl-docker', "./front-end")
-                    def customImage = docker.build("h4ndshake/proyecto-final:${env.BUILD_ID}", "./front-end")
+                    def customImage = docker.build("h4ndshake/proyecto-final:app-react_v${env.BUILD_ID}", "./front-end")
                     //dir('front-end'){
                     //    sh 'docker build -t app-react .'
                     //}
