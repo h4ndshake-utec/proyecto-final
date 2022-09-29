@@ -4,7 +4,7 @@ WORKDIR /front-end
 
 COPY . .
  
-RUN npm install 
+RUN npm install --force
 
 EXPOSE 4200
  
