@@ -7,8 +7,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 
 #Set Driver
-s = Service('/usr/local/bin/chromedriver')
-driver = webdriver.Chrome(service=s)
+#s = Service('/usr/local/bin/chromedriver')
+driver = webdriver.Chrome('/usr/local/bin/chromedriver')
 
 class Tests(unittest.TestCase):
 
