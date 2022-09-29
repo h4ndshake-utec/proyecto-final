@@ -46,3 +46,8 @@ services:
       - 8082:80
     depends_on:
       - 'mysql-db'
+
+  selenium:
+    image: selenium/standalone-firefox
+    container_name: selenium
+    network_mode: "host"
