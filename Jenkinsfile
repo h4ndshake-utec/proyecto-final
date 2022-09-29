@@ -16,9 +16,11 @@ pipeline {
         stage('build'){
               
             steps{
-
-                docker.image('app-react', "./front-end")
-                def customImage = docker.build("handshake/appnode:${env.BUILD_ID}")
+                script{
+                    docker.image('app-react', "./front-end")
+                    def customImage = docker.build("handshake/appnode:${env.BUILD_ID}")
+                }
+                
                 /*dir('front-end'){
                     sh ''
                 }*/
