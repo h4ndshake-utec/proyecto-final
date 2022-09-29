@@ -15,7 +15,7 @@ pipeline {
 
     stages {
 
-        def customImage
+        def customImage = ''
 
         stage('build'){
               
