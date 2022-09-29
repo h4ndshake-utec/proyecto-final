@@ -1,4 +1,3 @@
-from cmath import e
 import time
 import unittest
 from selenium import webdriver
@@ -7,8 +6,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 
 #Set Driver
-#s = Service('/usr/local/bin/chromedriver')
-driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+s = Service('/usr/local/bin/chromedriver')
+chromeOptions = webdriver.ChromeOptions() 
+chromeOptions.add_argument("--remote-debugging-port=9222")
+
+driver = webdriver.Chrome(service=s, chrome_options=chromeOptions)
 
 class Tests(unittest.TestCase):
 
@@ -22,12 +24,12 @@ class Tests(unittest.TestCase):
         #Clic en Start Process
         startProcessBtn = driver.find_element(By.LINK_TEXT, value="Start Process")
         startProcessBtn.click()
-        time.sleep(1)
+        time.sleep(2)
         
         #Clic en My Process
         myProcessBtn = driver.find_element(By.LINK_TEXT, value="My Process")
         myProcessBtn.click()
-        time.sleep(1)
+        time.sleep(2)
 
         
         #Cargo la First Name
