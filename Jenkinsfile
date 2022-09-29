@@ -19,7 +19,7 @@ pipeline {
                 script{
 
                         
-                    docker.withRegistry('https://registry.example.com', '6e04cdc9-c5fa-4486-83b7-2d6b05a127f7') {
+                    docker.withRegistry('https://hub.docker.com', '6e04cdc9-c5fa-4486-83b7-2d6b05a127f7') {
                         def customImage = docker.build("h4ndshake/proyecto-final:app-react_v${env.BUILD_ID}", "./front-end")
                         customImage.push()
                         customImage.push('latest')
