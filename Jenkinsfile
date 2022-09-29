@@ -15,12 +15,14 @@ pipeline {
 
     stages {
 
+        def customImage
+
         stage('build'){
               
             steps{
                 script{
                     docker.withRegistry('', registryCredential) {
-                        def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
+                        customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
                         //customImage.push()
                         //customImage.push('app-react_latest')
                     }
