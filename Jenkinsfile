@@ -30,9 +30,8 @@ pipeline {
         
         
         stage('test'){
-            
-            dir('front-end'){
-                steps{
+            steps{
+                dir('front-end'){
                     sh 'python3 test.py'
                 }
             }
