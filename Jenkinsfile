@@ -37,8 +37,10 @@ pipeline {
         */
         stage('deploy'){
             steps{
-                customImage.push()
-                customImage.push('app-react_latest')
+                script{
+                    customImage.push()
+                    customImage.push('app-react_latest')
+                }
                 sh 'docker compose up -d'
             }
         }
