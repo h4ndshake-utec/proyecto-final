@@ -1,10 +1,10 @@
-FROM node
+FROM h4ndshake/proyecto-final:app-react-base
 
 WORKDIR /front-end 
 
 COPY . .
  
-RUN npm install -g npm@8.19.2 && npm install && npm install -g npm@8.19.2
+#RUN npm install
 
 EXPOSE 4200
  
