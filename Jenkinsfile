@@ -18,11 +18,14 @@ pipeline {
             steps{
                 script{
                     //docker.image('pahud/eks-kubectl-docker', "./front-end")
-                    def customImage = docker.build("handshake/appnode:${env.BUILD_ID}", "./front-end")
+                    //def customImage = docker.build("handshake/appnode:${env.BUILD_ID}", "./front-end")
+                    dir('front-end'){
+                        sh 'docker build -t app-react .'
+                    }
                 }
                 
                 /*dir('front-end'){
-                    sh ''
+                    sh 'docker build -t app-react .'
                 }*/
             }
         }
