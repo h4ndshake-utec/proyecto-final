@@ -4,7 +4,7 @@ WORKDIR /front-end
 
 COPY . .
  
-RUN npm clean-install
+RUN npm install -g npm@8.19.2 && npm install
 
 EXPOSE 4200
  
