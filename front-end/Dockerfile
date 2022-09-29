@@ -1,10 +1,9 @@
+#FROM node
 FROM h4ndshake/proyecto-final:app-react-base
 
 WORKDIR /front-end 
 
 COPY . .
- 
-#RUN npm install
 
 EXPOSE 4200
  
