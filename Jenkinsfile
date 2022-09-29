@@ -26,13 +26,6 @@ pipeline {
                         customImage.push()
                         customImage.push('app-react_latest')
                     }
-                    //docker.image('pahud/eks-kubectl-docker', "./front-end")
-                    //def customImage = docker.build("${registry}:app-react_v${env.BUILD_ID}", "./front-end")
-                    //customImage.push()
-                    //customImage.push('latest')
-                    //dir('front-end'){
-                    //    sh 'docker build -t app-react .'
-                    //}
                 }
             }
         }
@@ -42,11 +35,16 @@ pipeline {
             
         }
 
+        */
         stage('deploy'){
-            
+            steps{
+                dir('front-end'){
+                    sh 'docker compose up -d'
+                }
+            }
         }
         
-
+        /*
 
         
         stage('stop/rm') {
