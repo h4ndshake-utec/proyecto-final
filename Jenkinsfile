@@ -6,11 +6,13 @@ pipeline {
         string(name: 'tag_imagen', defaultValue: 'latest', description: 'tag de la imagen')
         string(name: 'puerto_imagen', defaultValue: '81', description: 'puerto de la imagen')
     }
-
-    environment {
-        name_final = "${name_container}${tag_imagen}${puerto_imagen}"
-    }
 */
+    environment {
+        //name_final = "${name_container}${tag_imagen}${puerto_imagen}"
+        registry = "h4ndshake/proyecto-final" 
+        registryCredential = '6e04cdc9-c5fa-4486-83b7-2d6b05a127f7' 
+    }
+
     stages {
 
         stage('build'){
@@ -19,13 +21,13 @@ pipeline {
                 script{
 
                         
-                    docker.withRegistry('docker.io', '6e04cdc9-c5fa-4486-83b7-2d6b05a127f7') {
+                    docker.withRegistry('', registryCredential) {
                         def customImage = docker.build("h4ndshake/proyecto-final:app-react_v${env.BUILD_ID}", "./front-end")
                         customImage.push()
                         customImage.push('latest')
                     }
                     //docker.image('pahud/eks-kubectl-docker', "./front-end")
-                    //def customImage = docker.build("h4ndshake/proyecto-final:app-react_v${env.BUILD_ID}", "./front-end")
+                    //def customImage = docker.build("${registry}:app-react_v${env.BUILD_ID}", "./front-end")
                     //customImage.push()
                     //customImage.push('latest')
                     //dir('front-end'){
