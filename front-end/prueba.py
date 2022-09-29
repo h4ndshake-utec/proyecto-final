@@ -10,8 +10,8 @@ import time
 class SiteTest(unittest.TestCase):
   
     def test_visit_site(self):
-        browser = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.FIREFOX)
-        browser.get("http://localhost:4200/")
+        browser = webdriver.Remote("http://host.docker.internal:4444/wd/hub", DesiredCapabilities.FIREFOX)
+        browser.get("http://host.docker.internal:4200/")
         
         #Clic en Start Process
         startProcessBtn = browser.find_element(By.LINK_TEXT, value="Start Process")
