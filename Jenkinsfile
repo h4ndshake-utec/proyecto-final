@@ -35,7 +35,7 @@ pipeline {
         
 
 
-/* 
+        /*
         stage('stop/rm') {
             when{
                 expression {
@@ -65,6 +65,7 @@ pipeline {
                 }
             }
         } 
+        */
     }
-    */
+    
 }
