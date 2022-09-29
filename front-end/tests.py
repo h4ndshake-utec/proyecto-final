@@ -7,11 +7,8 @@ from selenium.webdriver.chrome.service import Service
 
 #Set Driver
 s = Service('/usr/local/bin/chromedriver')
-chromeOptions = webdriver.ChromeOptions() 
-chromeOptions.add_argument("--remote-debugging-port=9222")
 
-driver = webdriver.Chrome(service=s, chrome_options=chromeOptions)
-
+driver = webdriver.Chrome(service=s)
 class Tests(unittest.TestCase):
 
     
@@ -62,8 +59,8 @@ class Tests(unittest.TestCase):
     #   self.assertEqual(sum((1, 2, 2)), 6, "Should be 6")
 
 
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+    #unittest.main()
 
 
 
