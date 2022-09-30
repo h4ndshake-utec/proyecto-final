@@ -11,7 +11,7 @@ pipeline {
         //name_final = "${name_container}${tag_imagen}${puerto_imagen}"
         registry = "h4ndshake/proyecto-final" 
         registryCredential = '6e04cdc9-c5fa-4486-83b7-2d6b05a127f7' 
-        def customImage = ''
+        
     }
 
     stages {
@@ -32,7 +32,7 @@ pipeline {
         stage('test'){
             steps{
                 dir('front-end'){
-                    sh 'python3 prueba.py'
+                    sh 'python3 tests.py'
                 }
             }
         }
