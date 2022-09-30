@@ -19,7 +19,7 @@ class SiteTest(unittest.TestCase):
         #Clic en Start Process
         startProcessBtn = browser.find_element(By.LINK_TEXT, value="Start Process")
         startProcessBtn.click()
-        time.sleep(8)
+        time.sleep(20)
 
         #Clic en My Process
         myProcessBtn = browser.find_element(By.LINK_TEXT, value="My Process")
