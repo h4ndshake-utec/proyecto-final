@@ -28,7 +28,7 @@ pipeline {
             }
         }
         
-        
+        /* 
         stage('test'){
             steps{
                 dir('front-end'){
@@ -37,6 +37,7 @@ pipeline {
             }
         }
 
+        */
         
         stage('deploy'){
             steps{
