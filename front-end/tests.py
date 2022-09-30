@@ -10,6 +10,9 @@ import time
 class SiteTest(unittest.TestCase):
   
     def test_visit_site(self):
+
+        time(10)
+
         browser = webdriver.Remote("http://host.docker.internal:4444/wd/hub", DesiredCapabilities.FIREFOX)
         browser.get("http://localhost:4200/")
         
