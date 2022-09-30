@@ -19,29 +19,29 @@ class SiteTest(unittest.TestCase):
         #Clic en Start Process
         startProcessBtn = browser.find_element(By.LINK_TEXT, value="Start Process")
         startProcessBtn.click()
-        time.sleep(2)
+        time.sleep(4)
 
         #Clic en My Process
         myProcessBtn = browser.find_element(By.LINK_TEXT, value="My Process")
         myProcessBtn.click()
-        time.sleep(2)
+        time.sleep(4)
 
         
         #Cargo la First Name
         firstName = browser.find_element(By.ID, "firstName")
         firstName.clear()
         firstName.send_keys("Juan")
-        time.sleep(2)
+        time.sleep(4)
 
         #Cargo la Last Name
         lastName = browser.find_element(By.ID, "lastName")
         lastName.clear()
         lastName.send_keys("Perez")
-        time.sleep(2)
+        time.sleep(4)
 
         #Presiono ENTER para iniciar proceso
         lastName.send_keys(Keys.RETURN)
-        time.sleep(2)
+        time.sleep(4)
 
         try:
             self.assertTrue("Process has been started." in browser.page_source, "Fallo test")
