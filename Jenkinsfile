@@ -29,13 +29,13 @@ pipeline {
         }
         
         
-        stage('test'){
+        /* stage('test'){
             steps{
                 dir('front-end'){
                     sh 'python3 tests.py'
                 }
             }
-        }
+        } */
 
         
         stage('deploy'){
