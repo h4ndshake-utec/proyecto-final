@@ -30,7 +30,6 @@ services:
     network_mode: "host"   
     depends_on:
       - 'camunda' 
-    #usa el puerto 4200 por defecto, conectarse a localhost:4200
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
