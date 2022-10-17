@@ -11,40 +11,13 @@ class SiteTest(unittest.TestCase):
   
     def test_visit_site(self):
 
-        time.sleep(60)
+        time.sleep(40)
 
         browser = webdriver.Remote("http://host.docker.internal:4444/wd/hub", DesiredCapabilities.FIREFOX)
-        browser.get("http://localhost:4200/")
-        
-        #Clic en Start Process
-        startProcessBtn = browser.find_element(By.LINK_TEXT, value="Start Process")
-        startProcessBtn.click()
-        time.sleep(60)
-
-        #Clic en My Process
-        myProcessBtn = browser.find_element(By.LINK_TEXT, value="My Process")
-        myProcessBtn.click()
-        time.sleep(4)
-
-        
-        #Cargo la First Name
-        firstName = browser.find_element(By.ID, "firstName")
-        firstName.clear()
-        firstName.send_keys("Juan")
-        time.sleep(4)
-
-        #Cargo la Last Name
-        lastName = browser.find_element(By.ID, "lastName")
-        lastName.clear()
-        lastName.send_keys("Perez")
-        time.sleep(4)
-
-        #Presiono ENTER para iniciar proceso
-        lastName.send_keys(Keys.RETURN)
-        time.sleep(4)
+        browser.get("http://localhost:3000/")
 
         try:
-            self.assertTrue("Process has been started." in browser.page_source, "Fallo test")
+            self.assertTrue("Laab Project" in browser.page_source, "Fallo test")
             browser.close()
 
         except AssertionError:
