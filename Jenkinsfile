@@ -50,10 +50,10 @@ pipeline {
                     sh 'docker compose up -d'
                 }
             }
-        }*/
+        }
         
         
-
+        /*
         
         stage('stop/rm') {
             when{
