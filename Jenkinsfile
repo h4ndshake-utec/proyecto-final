@@ -20,9 +20,9 @@ pipeline {
               
             steps{
                 script{
-                    docker.withRegistry('', registryCredential) {
+/*                      docker.withRegistry('', registryCredential) {
                         customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
-                    }
+                    } */
                     sh 'docker compose up -d'
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
             }
         } 
 
-        
+        /* 
         stage('deploy'){
             steps{
                 script{
@@ -49,7 +49,7 @@ pipeline {
                     sh 'docker compose up -d'
                 }
             }
-        }
+        }*/
         
         /*
 
