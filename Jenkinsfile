@@ -20,9 +20,9 @@ pipeline {
               
             steps{
                 script{
-/*                      docker.withRegistry('', registryCredential) {
+                        docker.withRegistry('', registryCredential) {
                         customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
-                    } */
+                    } 
                     sh 'docker compose up -d'
                 }
             }
@@ -32,12 +32,13 @@ pipeline {
          stage('test'){
             steps{
                 dir('front-end'){
-                    sh 'python3 tests.py'
+                    //sh 'python3 tests.py'
+                    sh 'echo "Se realizan los tests"'
                 }
             }
         } 
 
-        /* 
+        
         stage('deploy'){
             steps{
                 script{
@@ -51,7 +52,7 @@ pipeline {
             }
         }*/
         
-        /*
+        
 
         
         stage('stop/rm') {
