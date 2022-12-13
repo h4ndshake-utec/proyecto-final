@@ -1,0 +1,78 @@
+version: '3.8'
+services:
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql-db
+    network_mode: "host"
+    volumes:
+      - /home/dmorales/volumenesDocker/mysql_bpm:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: camunda_db
+
+
+
+########################################################################
+########################################################################
+  camunda:
+    image: camunda/camunda-bpm-platform:run-latest
+    container_name: camunda
+    network_mode: "host"
+    volumes:
+      - /home/dmorales/volumenesDocker/camunda/configuration/default.yml:/camunda/configuration/default.yml
+    environment:
+      DB_DRIVER: com.mysql.jdbc.Driver
+      DB_URL: jdbc:mysql://localhost:3306/camunda_db?autoReconnect=true
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    depends_on:
+      - 'mysql-db'
+
+########################################################################
+########################################################################
+
+  frontend:
+    image: h4ndshake/proyecto-final:frontend_latest
+    stdin_open: true
+    container_name: frontend
+    network_mode: "host"
+    depends_on:
+      - 'backend'
+
+########################################################################
+########################################################################
+
+  backend:
+    image: h4ndshake/proyecto-final:backend_latest
+    container_name: backend
+    network_mode: "host"
+    depends_on:
+      - 'camunda'
+
+########################################################################
+########################################################################
+
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: 52.116.193.109
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    ports:
+      - 8082:80
+#    network_mode: "host"
+#    depends_on:
+#      - 'mysql-db'
+#    networks:
+#      laab-network:
+#        aliases:
+#          - phpmyadmin
+
+#  selenium:
+#    image: selenium/standalone-firefox
+#    container_name: selenium
+#    network_mode: "host"
+
