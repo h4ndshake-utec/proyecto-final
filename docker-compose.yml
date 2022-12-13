@@ -32,7 +32,7 @@ services:
 ########################################################################
 
   frontend:
-    image: h4ndshake/proyecto-final:frontend_latest
+    image: h4ndshake/proyecto-final:frontend_local_latest
     stdin_open: true
     container_name: frontend
     network_mode: "host"
@@ -43,7 +43,7 @@ services:
 ########################################################################
 
   backend:
-    image: h4ndshake/proyecto-final:backend_latest
+    image: h4ndshake/proyecto-final:backend_local_latest
     container_name: backend
     network_mode: "host"
     depends_on:

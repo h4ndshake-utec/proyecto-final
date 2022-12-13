@@ -2,13 +2,14 @@ import axios from "axios";
 
 const ipExterna = "52.116.193.109";
 const ipInterna = "10.240.64.8";
+const localhost = "localhost"
 
 
 //Obtiene las tareas de un grupo
 export async function getTasksGroup() {
   try {
     const response = await axios.get(
-      `http://${ipExterna}:8080/engine-rest/task?candidateGroup=analista`
+      `http://${localhost}:8080/engine-rest/task?candidateGroup=analista`
     );
     return response.data;
   } catch (error) {
@@ -20,7 +21,7 @@ export async function getTasksGroup() {
 export async function getVariablesTask(taskId) {
   try {
     const response = await axios.get(
-      `http://${ipExterna}:8080/engine-rest/task/${taskId}/variables?deserializeValues=true`
+      `http://${localhost}:8080/engine-rest/task/${taskId}/variables?deserializeValues=true`
     );
     return response.data;
   } catch (error) {
@@ -32,7 +33,7 @@ export async function getVariablesTask(taskId) {
 export const verificarUser = async (user, pass) => {
   try {
     const response = await axios.post(
-      `http://${ipExterna}:8080/engine-rest/identity/verify`,
+      `http://${localhost}:8080/engine-rest/identity/verify`,
       {
         username: user,
         password: pass,
@@ -48,7 +49,7 @@ export const verificarUser = async (user, pass) => {
 export const getGroupsByUser = async (user) => {
   try {
     const response = await axios.get(
-      `http://${ipExterna}:8080/engine-rest/identity/groups?userId=${user}`
+      `http://${localhost}:8080/engine-rest/identity/groups?userId=${user}`
     );
     return response.data.groups;
   } catch (error) {
@@ -60,7 +61,7 @@ export const getGroupsByUser = async (user) => {
 export const startProcess = async (datos) => {
   try {
     const response = await axios.post(
-      `http://${ipExterna}:8080/engine-rest/process-definition/key/analisis/start`,
+      `http://${localhost}:8080/engine-rest/process-definition/key/analisis/start`,
 
       datos
     );
@@ -75,7 +76,7 @@ export const startProcess = async (datos) => {
 export const getTaskByIdProcessInstance = async (isProcessInstance) => {
   try {
     const response = await axios.get(
-      `http://${ipExterna}:8080/engine-rest/task?processInstanceId=${isProcessInstance}`
+      `http://${localhost}:8080/engine-rest/task?processInstanceId=${isProcessInstance}`
     );
     return response.data[0].id;
   } catch (error) {
@@ -88,7 +89,7 @@ export const getTaskByIdProcessInstance = async (isProcessInstance) => {
 export const completeTaskById = async (idTask, data = {}) => {
   try {
     const response = await axios.post(
-      `http://${ipExterna}:8080/engine-rest/task/${idTask}/complete`,
+      `http://${localhost}:8080/engine-rest/task/${idTask}/complete`,
       data
     );
     return response.data;
@@ -102,7 +103,7 @@ export const completeTaskById = async (idTask, data = {}) => {
 export const getProccessByDates = async (fechaInicio, fechaFin) => {
   try {
     const response = await axios.post(
-      `http://${ipExterna}:8080/engine-rest/history/process-instance`,
+      `http://${localhost}:8080/engine-rest/history/process-instance`,
       {
         finishedAfter: fechaInicio,
         finishedBefore: fechaFin,
@@ -119,7 +120,7 @@ export const getProccessByDates = async (fechaInicio, fechaFin) => {
 export async function getHistoryVarableInstance(proccessId) {
   try {
     const response = await axios.get(
-      `http://${ipExterna}:8080/engine-rest/history/variable-instance?processInstanceId=${proccessId}`
+      `http://${localhost}:8080/engine-rest/history/variable-instance?processInstanceId=${proccessId}`
     );
     return response.data;
   } catch (error) {
@@ -132,7 +133,7 @@ export async function getHistoryVarableInstance(proccessId) {
 
 export const getClientes = async () => {
   try {
-    const { data } = await axios.get(`http://${ipExterna}:4000/clientes`);
+    const { data } = await axios.get(`http://${localhost}:4000/clientes`);
     return data;
   } catch (error) {
     console.error(error);
@@ -142,7 +143,7 @@ export const getClientes = async () => {
 
 export const addClient = async (data = {}) => {
   try {
-    const response = await axios.post(`http://${ipExterna}:4000/addCliente`, data);
+    const response = await axios.post(`http://${localhost}:4000/addCliente`, data);
     return response.data;
   } catch (error) {
     return error;
@@ -152,7 +153,7 @@ export const addClient = async (data = {}) => {
 export const editClient = async (data = {}) => {
   try {
     const response = await axios.post(
-      `http://${ipExterna}:4000/editCliente`,
+      `http://${localhost}:4000/editCliente`,
       data
     );
     return response.data;
@@ -163,7 +164,7 @@ export const editClient = async (data = {}) => {
 
 export const deleteClient = async (id) => {
   try {
-    const response = await axios.post(`http://${ipExterna}:4000/deleteCliente`, {
+    const response = await axios.post(`http://${localhost}:4000/deleteCliente`, {
       id,
     });
     return response.data;
