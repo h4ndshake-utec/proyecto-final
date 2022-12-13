@@ -20,12 +20,12 @@ pipeline {
               
             steps{
                 echo 'Building..'
-                /* script{
+                script{
                     docker.withRegistry('', registryCredential) {
-                        customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
+                        customImage = docker.build("${env.registry}:frontend_local_v${env.BUILD_ID}")
                     }
                     sh 'docker compose up -d'
-                } */
+                } 
             }
         }
         
