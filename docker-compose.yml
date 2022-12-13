@@ -58,7 +58,7 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     environment:
-      PMA_HOST: 52.116.193.109
+      PMA_HOST: localhost
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     ports:
