@@ -21,9 +21,10 @@ pipeline {
             steps{
                 echo 'Building..'
                 script{
-                    docker.withRegistry('', registryCredential) {
-                        customImage = docker.build("${env.registry}:frontend_local_v${env.BUILD_ID}")
-                    }
+                    sh "docker build -t ${env.registry}:frontend_local_v${env.BUILD_ID} ."
+                    /* docker.withRegistry('', registryCredential) {
+                        customImage = docker.build("${env.registry}:frontend_local_v${env.BUILD_ID}",".")
+                    } */
                     sh 'docker compose up -d'
                 } 
             }
@@ -45,7 +46,7 @@ pipeline {
                 echo 'Generating images..'
                 /* script{
                     docker.withRegistry('', registryCredential) {
-                        //def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
+                        //def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", ".")
                         customImage.push()
                         customImage.push('app-react_latest')
                     }
