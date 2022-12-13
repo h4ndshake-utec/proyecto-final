@@ -19,13 +19,13 @@ pipeline {
         stage('build'){
               
             steps{
-                script{
-                    echo 'Building..'
-                    /* docker.withRegistry('', registryCredential) {
+                echo 'Building..'
+                /* script{
+                    docker.withRegistry('', registryCredential) {
                         customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
                     }
-                    sh 'docker compose up -d' */
-                }
+                    sh 'docker compose up -d'
+                } */
             }
         }
         
@@ -33,7 +33,7 @@ pipeline {
         stage('test'){
             steps{
                 echo 'Testing..'
-                /* dir('front-end'){
+               /*  dir('front-end'){
                     sh 'python3 tests.py'
                 } */
             }
@@ -42,15 +42,15 @@ pipeline {
         
         stage('deploy'){
             steps{
-                echo 'Generating image...'
-                script{
-                    /* docker.withRegistry('', registryCredential) {
+                echo 'Generating images..'
+                /* script{
+                    docker.withRegistry('', registryCredential) {
                         //def customImage = docker.build("${env.registry}:app-react_v${env.BUILD_ID}", "./front-end")
                         customImage.push()
                         customImage.push('app-react_latest')
                     }
-                    sh 'docker compose up -d' */
-                }
+                    sh 'docker compose up -d'
+                } */
             }
         }
         
