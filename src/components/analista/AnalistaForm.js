@@ -55,31 +55,7 @@ export default function EnsayoForm() {
       setErrorFechaAnalisis(false);
       setLeyendaFechaAnalisis("");
     }
-
-    if (fechaAnalisis !== null) {
-      if (fechaAnalisis < new Date(fechaRecepcion.split("T")[0])) {
-        setErrorFechaAnalisis(true);
-        setLeyendaFechaAnalisis("Debe ser mayor a la fecha de recepción");
-        error = true;
-        setEnviar(false);
-      } else {
-        setErrorFechaAnalisis(false);
-        setLeyendaFechaAnalisis("");
-      }
-    }
     
-    const dateNow = new Date(new Date().toISOString().split("T")[0]);
-    if (fechaAnalisis !== null && fechaAnalisis > new Date(fechaRecepcion.split("T")[0])){
-      if (fechaAnalisis > dateNow) {
-        setErrorFechaAnalisis(true);
-        setLeyendaFechaAnalisis("Debe ser menor o igual a la fecha actual");
-        error = true;
-        setEnviar(false);
-      } else {
-        setErrorFechaAnalisis(false);
-        setLeyendaFechaAnalisis("");
-      }
-    }
 
     if (resultado === "") {
       setErrorResultado(true);

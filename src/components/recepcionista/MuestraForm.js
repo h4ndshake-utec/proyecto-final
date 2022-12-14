@@ -208,41 +208,6 @@ export default function AnalisisForm() {
         setLeyendaFechaMuestra("");
       }
     }
-
-    const dateNow = new Date(new Date().toISOString().split("T")[0]);
-
-    if (
-      fechaMuestra !== null &&
-      fechaVencimiento !== null &&
-      fechaMuestra <= fechaVencimiento
-    ) {
-      if (dateNow < fechaMuestra) {
-        setErrorFechaMuestra(true);
-        setLeyendaFechaMuestra("Debe ser menor o igual a la fecha actual");
-        error = true;
-        setEnviar(false);
-      } else {
-        setErrorFechaMuestra(false);
-        setLeyendaFechaMuestra("");
-      }
-    }
-
-    if (
-      fechaMuestra !== null &&
-      fechaVencimiento !== null &&
-      fechaMuestra <= fechaVencimiento
-    ) {
-      if (dateNow > fechaVencimiento) {
-        setErrorFechaVencimiento(true);
-        setLeyendaFechaVencimiento("Debe ser mayor o igual a la fecha actual");
-        error = true;
-        setEnviar(false);
-      } else {
-        setErrorFechaVencimiento(false);
-        setLeyendaFechaVencimiento("");
-      }
-    }
-
     setSinErrores(!error);
   };
 
